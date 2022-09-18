@@ -1,4 +1,5 @@
-.button{
-    background-color: white;
-    border: none;
+input:checked+div {
+    text-decoration: line-through;
+    text-decoration-color: black;
 }
+
