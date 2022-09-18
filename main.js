@@ -84,17 +84,37 @@ function showData() {
       <div>${time}</div>
     </div>
 
-    <a href="#!" data-mdb-toggle="tooltip" title="Remove item">
-    <i class="fa-regular fa-pen-to-square"></i>
-      <i class="fas fa-times text-primary"></i>
-    </a>
+    <img src="https://cdn-icons-png.flaticon.com/24/484/484560.png" onclick="deleteTask(${i})">
+
   </li>
     `;
 
   }
+   //#Delete All button
+    if (ListItems.length > 0) {
+        document.getElementById('deleteAll').innerHTML = `
+            <button onclick="deleteAll()" class="btn btn-primary btn-lg ms-2"> Delete All </button>
+            `;
 
+    } else {
+        document.getElementById('deleteAll').innerHTML = '';
+    }
 
   document.getElementById('list').innerHTML = list;
   document.getElementById('input').value = "";
   console.log(localStorage);
+}
+
+//#Delete tasks
+function deleteTask(i) {
+    ListItems.splice(i, 1);
+    localStorage.task = JSON.stringify(ListItems);
+    showData();
+}
+
+//#Delete All tasks
+function deleteAll() {
+    ListItems.splice(0);
+    localStorage.clear();
+    showData();
 }
